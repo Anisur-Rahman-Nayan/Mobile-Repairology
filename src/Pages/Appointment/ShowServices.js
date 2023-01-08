@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ShowServices = ({service}) => {
+const ShowServices = ({service,setOpenModal}) => {
     return (
         <div class="card w-96 bg-primary font-bold text-primary-content">
   <div class="card-body">
@@ -16,7 +16,8 @@ const ShowServices = ({service}) => {
     
     
     <div class="card-actions justify-end">
-      <button class="btn" disabled={service.slots.length===0}>Book</button>
+     
+      <label for="booking-modal" class="btn" disabled={service.slots.length===0} onClick={()=>setOpenModal(service)}>Book Appointment !</label>
     </div>
   </div>
 </div>

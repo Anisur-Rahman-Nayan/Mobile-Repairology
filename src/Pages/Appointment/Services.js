@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { format } from 'date-fns';
 import 'react-day-picker/dist/style.css';
 import ShowServices from './ShowServices';
+import Modal from './Modal';
 
 
 const Services = ({date,repairServices}) => {
-   
+   const [openModal, setOpenModal] = useState(null)
     return (
         <div>
             
@@ -13,12 +14,14 @@ const Services = ({date,repairServices}) => {
           
           <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
           {
-            repairServices.map(service=> <ShowServices key={service._id} service={service} ></ShowServices>)
+            repairServices.map(service=> <ShowServices key={service._id} service={service} setOpenModal={setOpenModal} ></ShowServices>)
            }
           </div>
 
            <div>
-           
+           {
+            openModal && <Modal openModal={openModal} date={date}></Modal>
+           }
            </div>
         </div>
     );
